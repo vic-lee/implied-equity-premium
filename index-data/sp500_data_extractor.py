@@ -11,12 +11,10 @@ def extract_current_sp500():
     if not soup:
         return
 
-    header = soup.find(name='div', attrs={'id': 'Lead-2-QuoteHeader-Proxy'})
-
-    price = header.find(
-        name='span',
-        attrs={'class': 'Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)'}
-    ).text
+    header_id = 'Lead-2-QuoteHeader-Proxy'
+    price_class = 'Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)'
+    header = soup.find(name='div', attrs={'id': header_id})
+    price = header.find(name='span', attrs={'class': price_class}).text
 
     print("S&P 500 Price: {}".format(price))
 
