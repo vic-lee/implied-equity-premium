@@ -21,7 +21,10 @@ def main():
         soup = BeautifulSoup(html_source, 'html.parser')
 
     # print(soup)
-    print(soup.find('div', attrs={'id': 'Lead-2-QuoteHeader-Proxy'}))
+    header = soup.find('div', attrs={'id': 'Lead-2-QuoteHeader-Proxy'})
+    print(header)
+    price = header.find('span', attrs={'class': 'Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)'}).text
+    print("S&P 500 Price: {}".format(price))
     # price = price_module.find_element_by_class_name('Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)')
     # print(price)
 
