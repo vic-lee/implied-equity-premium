@@ -12,6 +12,9 @@ def soup_maker(url, headless=False):
 
 
 def soup_maker_webdriver(url, headless=False):
+    """Return a BeaultifulSoup object, given a url.
+    This version utilizes selenium driver.
+    """
     try: 
         with webdriver.Chrome('_driver/chromedriver') as driver:
             driver.get(url)
