@@ -40,8 +40,8 @@ def main():
     earnings = extract_annual_earnings()
     print(earnings)
 
-    u.dict_to_csv(dividends, 'dividends.csv')
-    u.dict_to_csv(earnings, 'earnings.csv')
+    u.dict_to_csv(dividends, '../output/dividends.csv')
+    u.dict_to_csv(earnings, '../output/earnings.csv')
 
 
 if __name__ == '__main__':

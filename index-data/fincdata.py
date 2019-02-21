@@ -13,16 +13,20 @@ class FincData:
     
 
     def get_sp500_price(self):
+        # yahoofinance
         pass
     
 
     def get_tbond_rate(self):
+        # yahoofinance
         pass
 
 
     def get_current_analyst_expectations(self):
+        # csv
         pass
     
 
     def get_equity_yield(self):
+        # multpl
         pass
