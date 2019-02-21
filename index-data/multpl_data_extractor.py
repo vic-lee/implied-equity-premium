@@ -1,17 +1,12 @@
 from bs4 import BeautifulSoup
 from urllib import request as re
 import csv
-
-
-def soup_maker(url):
-    content = re.urlopen(url).read()
-    soup = BeautifulSoup(content, 'html.parser')
-    return soup
+import scrape_util as u
 
 
 def multpl_table_parser(url):
     contents = {}
-    soup = soup_maker(url)
+    soup = u.soup_maker(url)
     rows = soup.find_all('tr')
     for row in rows:
         yr = row.select('td.left')
@@ -28,21 +23,14 @@ def multpl_table_parser(url):
 
 
 def extract_annual_earnings():
-    earnings = multpl_table_parser("http://www.multpl.com/s-p-500-earnings/table")
+    earnings = multpl_table_parser(
+        "http://www.multpl.com/s-p-500-earnings/table")
     return earnings
 
 
 def extract_annual_dividends():
     dvds = multpl_table_parser("http://www.multpl.com/s-p-500-dividend/table")
     return dvds
-
-
-def dict_to_csv(dict, filename):
-    keys = dict.keys()
-    with open(filename, 'w', newline='') as output_file:
-        dict_writer = csv.DictWriter(output_file, keys)
-        dict_writer.writeheader()
-        dict_writer.writerow(dict)
 
 
 def main():
@@ -52,8 +40,8 @@ def main():
     earnings = extract_annual_earnings()
     print(earnings)
 
-    dict_to_csv(dividends, 'dividends.csv')
-    dict_to_csv(earnings, 'earnings.csv')
+    u.dict_to_csv(dividends, 'dividends.csv')
+    u.dict_to_csv(earnings, 'earnings.csv')
 
 
 if __name__ == '__main__':
