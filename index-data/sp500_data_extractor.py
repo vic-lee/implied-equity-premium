@@ -6,10 +6,7 @@ from time import sleep
 
 def main():
     url = 'https://finance.yahoo.com/quote/%5EGSPC/'
-
-    with webdriver.Chrome('_driver/chromedriver') as driver:
-        driver.get(url)
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
+    soup = u.soup_maker_webdriver(url) if not None else None
 
     header = soup.find(name='div', attrs={'id': 'Lead-2-QuoteHeader-Proxy'})
     price = header.find(name='span', attrs={

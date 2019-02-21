@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from selenium import webdriver
 from urllib import request as re
 import csv
 
@@ -8,6 +9,16 @@ def soup_maker(url):
     content = re.urlopen(url).read()
     soup = BeautifulSoup(content, 'html.parser')
     return soup
+
+
+def soup_maker_webdriver(url):
+    try: 
+        with webdriver.Chrome('_driver/chromedriver') as driver:
+            driver.get(url)
+            soup = BeautifulSoup(driver.page_source, 'html.parser')
+        return soup
+    except:
+        return None
 
 
 def dict_to_csv(dict, filename):
