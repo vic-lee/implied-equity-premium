@@ -4,14 +4,14 @@ from urllib import request as re
 import csv
 
 
-def soup_maker(url):
+def soup_maker(url, headless=False):
     """Returns a BeautifulSoup, given an url."""
     content = re.urlopen(url).read()
     soup = BeautifulSoup(content, 'html.parser')
     return soup
 
 
-def soup_maker_webdriver(url):
+def soup_maker_webdriver(url, headless=False):
     try: 
         with webdriver.Chrome('_driver/chromedriver') as driver:
             driver.get(url)
