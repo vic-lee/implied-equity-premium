@@ -4,7 +4,7 @@ from urllib import request as re
 import csv
 
 
-def soup_maker(url, headless=False):
+def soup_maker(url):
     """Returns a BeautifulSoup, given an url.
     This version utilizes urllib. 
     """
