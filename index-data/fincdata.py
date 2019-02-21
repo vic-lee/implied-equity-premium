@@ -2,6 +2,11 @@ class FincData:
     """This class contains methods that return essential data for implied ERP
     calculations. Data includes S&P500 spot price, 10Yr T-Bond spot rate, 
     current analyst expectations, and current yields. 
+
+    Three-layered system: 
+    - FincData Class Container
+    - Multpl, Yahoo Finance data scraper
+    - Util
     """
     def __init__(self):
         pass
