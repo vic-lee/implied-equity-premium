@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from urllib import request as re
+from time import time
 import csv
 
 
@@ -40,3 +41,6 @@ def dict_to_csv(dict, filename):
         dict_writer = csv.DictWriter(output_file, keys)
         dict_writer.writeheader()
         dict_writer.writerow(dict)
+
+def seconds_elapsed(start_time):
+    return str(time() - start_time)[:4]
