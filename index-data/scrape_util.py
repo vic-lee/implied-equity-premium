@@ -5,7 +5,9 @@ import csv
 
 
 def soup_maker(url, headless=False):
-    """Returns a BeautifulSoup, given an url."""
+    """Returns a BeautifulSoup, given an url.
+    This version utilizes urllib. 
+    """
     content = re.urlopen(url).read()
     soup = BeautifulSoup(content, 'html.parser')
     return soup
