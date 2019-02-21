@@ -18,11 +18,14 @@ def soup_maker_webdriver(url, headless=False):
     This version utilizes selenium driver.
     """
     try:
-        with webdriver.Chrome('_driver/chromedriver') as driver:
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--headless')
+        with webdriver.Chrome('_driver/chromedriver', chrome_options=chrome_options) as driver:
             driver.get(url)
             soup = BeautifulSoup(driver.page_source, 'html.parser')
         return soup
-    except:
+    except Exception as e:
+        print(e)
         return None
 
 
