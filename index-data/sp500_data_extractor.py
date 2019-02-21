@@ -9,9 +9,12 @@ def main():
     soup = u.soup_maker_webdriver(url) if not None else None
 
     header = soup.find(name='div', attrs={'id': 'Lead-2-QuoteHeader-Proxy'})
-    price = header.find(name='span', attrs={
-                        'class': 'Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)'}).text
-    print("S&P 500 Price: {}".format(price))
+    price = header.find(
+        name='span', 
+        attrs={'class': 'Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)'}
+    )
+    
+    print("S&P 500 Price: {}".format(price.text))
 
 
 if __name__ == '__main__':
