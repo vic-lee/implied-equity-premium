@@ -6,7 +6,7 @@ from time import sleep
 
 def extract_current_sp500():
     url = 'https://finance.yahoo.com/quote/%5EGSPC/'
-    soup = u.soup_maker_webdriver(url)
+    soup = u.soup_maker_webdriver(url=url, headless=True)
 
     if not soup:
         return
@@ -17,7 +17,7 @@ def extract_current_sp500():
         name='span',
         attrs={'class': 'Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)'}
     ).text
-    
+
     print("S&P 500 Price: {}".format(price))
 
     try: 
